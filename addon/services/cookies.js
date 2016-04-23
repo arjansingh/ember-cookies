@@ -8,11 +8,7 @@ const { computed, computed: { reads }, isEmpty, typeOf, isNone, assert } = Ember
 export default Ember.Service.extend({
   _isFastBoot: reads('_fastBoot.isFastBoot'),
 
-  _fastBoot: computed(function() {
-    let owner = getOwner(this);
-
-    return owner.lookup('service:fastBoot');
-  }),
+  _fastBoot: Ember.inject.service('fastboot'),
 
   _document: computed(function() {
     return document;
